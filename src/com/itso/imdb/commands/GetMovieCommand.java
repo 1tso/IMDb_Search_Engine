@@ -3,6 +3,7 @@ package com.itso.imdb.commands;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.itso.imdb.local_cache.Cache;
+import com.itso.imdb.local_cache.MapCache;
 import com.itso.imdb.shows.Movie;
 
 import java.net.MalformedURLException;

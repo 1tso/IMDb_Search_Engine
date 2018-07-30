@@ -1,5 +1,5 @@
 import com.itso.imdb.commands.*;
-import com.itso.imdb.local_cache.Cache;
+import com.itso.imdb.local_cache.MapCache;
 import org.junit.Test;
 
 import java.io.IOException;
@@ -19,7 +19,7 @@ public class GetMovieCommandTest {
         String input = "get-movie Guardians of the Galaxy --fields=Year";
         String actual = "{\"Year\":\"2014\"}";
         CommandParser commandParser = new CommandParser(input);
-        Cache cache =  new Cache();
+        MapCache cache =  new MapCache();
         GetMovieCommand getMovie = new GetMovieCommand(commandParser, cache);
         GetMovieCommand secondMovie = new GetMovieCommand(commandParser,cache);
         getMovie.execute();
@@ -31,7 +31,7 @@ public class GetMovieCommandTest {
     public void GivenNamelessCommandShoudThrowException() throws IOException {
         String command = "frozen --fields=Year";
         CommandParser commandParser = new CommandParser(command);
-        Command getMovie = new GetMovieCommand(commandParser,new Cache());
+        Command getMovie = new GetMovieCommand(commandParser,new MapCache());
         getMovie.execute();
     }
 
@@ -40,7 +40,7 @@ public class GetMovieCommandTest {
     public void GivenCommandWithIncorrectInputShouldThrowException() throws MalformedURLException {
         String command = "get-movie--fields=Year";
         CommandParser commandParser = new CommandParser(command);
-        GetMovieCommand getMovie = new GetMovieCommand(commandParser, new Cache());
+        GetMovieCommand getMovie = new GetMovieCommand(commandParser, new MapCache());
         getMovie.execute();
 
     }

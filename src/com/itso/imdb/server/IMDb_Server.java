@@ -1,6 +1,6 @@
 package com.itso.imdb.server;
 
-import com.itso.imdb.local_cache.Cache;
+import com.itso.imdb.local_cache.*;
 
 import java.io.IOException;
 
@@ -16,7 +16,7 @@ public class IMDb_Server  {
     private static final int DEF_PORT = 4444;
 
     public static void main(String[] args) {
-        Cache cache = new Cache();
+        Cache cache = new MapCache();
         try (ServerSocket ss = new ServerSocket(DEF_PORT)) {
             while (true) {
                 Socket client = ss.accept();
